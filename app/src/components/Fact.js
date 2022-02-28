@@ -28,9 +28,9 @@ function Form() {
   }
   console.log(factArr);
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center h-screen w-screen">
       <form onSubmit={getData}>
-        <p>Enter the number of posts:</p>
+        <p className="font-">Enter the number of posts:</p>
         <input
           onChange={(e) => setLimit(e.target.value)}
           defaultValue={1}
@@ -43,7 +43,11 @@ function Form() {
       </form>
       <ol>
         {factArr.map((fact, index) => {
-          return <li key={index}>{fact}</li>;
+          return (
+            <li key={index}>
+              {index + 1}){fact}
+            </li>
+          );
         })}
       </ol>
     </div>

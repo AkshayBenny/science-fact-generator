@@ -1,10 +1,11 @@
 import React from 'react';
-import Form from './components/Form';
+import Fact from './components/Fact';
 
 function App() {
   return (
     <div>
-      <Form />
+      <Fact />
+      
     </div>
   );
 }
