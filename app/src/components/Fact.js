@@ -4,11 +4,13 @@ import axios from 'axios';
 function Form() {
   const [limit, setLimit] = useState(1);
   const [fact, setFact] = useState([]);
+  const [isFetching, setIsFetching] = useState(false)
   const factArr = [];
 
   const getData = async (e) => {
     e.preventDefault();
     try {
+      setIsFetching(true);
       const res = await axios.get(
         `${process.env.REACT_APP_URL}/facts?limit=${limit}`,
         {
@@ -17,6 +19,7 @@ function Form() {
           },
         }
       );
+      setIsFetching(false);
       setFact(res.data);
     } catch (err) {
       console.log(err);
@@ -41,6 +44,9 @@ function Form() {
           Generate
         </button>
       </form>
+      {isFetching && <div>
+        <p>Loading..........</p>
+        </div>}
       <ol>
         {factArr.map((fact, index) => {
           return (
